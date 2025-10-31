@@ -20,6 +20,7 @@ The conditional tokens contracts are deployed at the following addresses:
 * Mainnet: ```0xC59b0e4De5F1248C1140964E0fF287B192407E0C```
 * xDai: ```0xCeAfDD6bc0bEF976fdCd1112955828E00543c0Ce```
 * Rinkeby: ```0x36bede640D19981A82090519bC1626249984c908```
+* Bsc Testnet: ```0xAa8876E052671ac5A9043b5e86Bc1464E5BEE4d3```
 
 
 License
