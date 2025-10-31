@@ -1,3 +1,6 @@
+require("dotenv").config();
+const HDWalletProvider = require("truffle-hdwallet-provider");
+
 const config = {
   networks: {
     mainnet: {
@@ -29,6 +32,18 @@ const config = {
       host: "localhost",
       port: 8545,
       network_id: "*"
+    },
+    // BSC Testnet configuration
+    bscTestnet: {
+      provider: () =>
+        new HDWalletProvider(
+          process.env.PRIVATE_KEY || process.env.MNEMONIC,
+          process.env.BSC_TESTNET_RPC ||
+            "https://data-seed-prebsc-1-s1.binance.org:8545/"
+        ),
+      network_id: 97,
+      gasPrice: 1000000000, // 1 gwei
+      skipDryRun: true
     }
   },
   mocha: {
@@ -42,13 +57,17 @@ const config = {
   },
   compilers: {
     solc: {
-      version: "0.5.10",
+      version: "node_modules/solc", // Use locally installed solc from node_modules
       settings: {
         optimizer: {
           enabled: true
         }
       }
     }
+  },
+  plugins: ["truffle-plugin-verify"],
+  api_keys: {
+    bscscan: process.env.BSCSCAN_API_KEY
   }
 };
 
